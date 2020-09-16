@@ -19,12 +19,6 @@ public class ClipHandler
         return clip;
     }
 
-    private static void stopWave (Clip clip)
-    {
-        clip.stop ();
-        clip.close ();
-    }
-
     public static void startStop (String name)
     {
         Clip cl = map.get (name);
