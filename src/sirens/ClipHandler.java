@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class ClipHandler
 {
-    private static HashMap<String, Clip> map = new HashMap<>();
+    private static HashMap<String, Clip> map = new HashMap<> ();
 
     private static Clip playWave (InputStream is) throws Exception
     {
@@ -24,21 +24,26 @@ public class ClipHandler
         Clip cl = map.get (name);
         if (cl != null)
         {
-            cl.stop();
-            cl.close();
-            map.remove (name);
-        }
-        else
-        {
-            InputStream is = ClassLoader.getSystemResourceAsStream (name);
-            try
+            if (cl.isRunning ())
             {
-                cl = playWave (is);
-                map.put (name, cl);
-            } catch (Exception e)
-            {
-                System.out.println (e);
+                cl.stop ();
             }
+            else
+            {
+                cl.loop (Clip.LOOP_CONTINUOUSLY);
+                cl.start ();
+            }
+            return;
+        }
+        InputStream is = ClassLoader.getSystemResourceAsStream (name);
+        try
+        {
+            cl = playWave (is);
+            map.put (name, cl);
+        }
+        catch (Exception e)
+        {
+            System.out.println (e);
         }
     }
 }
