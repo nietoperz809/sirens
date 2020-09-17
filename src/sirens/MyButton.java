@@ -5,10 +5,13 @@ import javax.swing.plaf.ButtonUI;
 import javax.swing.plaf.metal.MetalToggleButtonUI;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.HashMap;
 
 class MyButton extends JToggleButton
 {
-    static final ButtonUI ui = new MetalToggleButtonUI ()
+    private static final HashMap<Character, MyButton> keyMap = new HashMap<>();
+
+    private static final ButtonUI ui = new MetalToggleButtonUI ()
     {
         @Override
         protected Color getSelectColor ()
@@ -17,26 +20,33 @@ class MyButton extends JToggleButton
         }
     };
 
-    public MyButton ()
+    public static  MyButton getFromKey (Character c)
+    {
+        return keyMap.get (c);
+    }
+
+    public MyButton (Container pane, char key, String title, String wavefile)
     {
         super ();
+        keyMap.put (key, this);
+        setText ("["+key+"] "+title);
+        addActionListener (evt -> ClipHandler.startStop (wavefile));
+
         setPreferredSize (new Dimension (100, 100));
         setMinimumSize (new Dimension (100, 100));
         setUI (ui);
 
-        addFocusListener (new FocusListener ()
+        pane.add(this);
+
+        addFocusListener (new FocusAdapter ()
         {
             @Override
             public void focusGained (FocusEvent e)
             {
-                Container c = getParent ().getParent ().getParent ().getParent ();
+                Container c = getParent ();
+                while (!(c instanceof MainFrame))
+                    c = c.getParent ();
                 c.requestFocus ();
-            }
-
-            @Override
-            public void focusLost (FocusEvent e)
-            {
-
             }
         });
     }
