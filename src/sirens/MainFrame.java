@@ -6,6 +6,7 @@
  */
 package sirens;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -15,15 +16,17 @@ import java.awt.event.KeyEvent;
  */
 public class MainFrame extends javax.swing.JFrame
 {
-
     public MainFrame ()
     {
-        initComponents ();
-    }
+//        try
+//        {
+//            javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+//        }
+//        catch (Exception e)
+//        {
+//            e.printStackTrace ();
+//        }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    private void initComponents ()
-    {
         Container c = getContentPane ();
         setDefaultCloseOperation (javax.swing.WindowConstants.EXIT_ON_CLOSE);
         c.setLayout (new java.awt.GridLayout (3, 3));
@@ -41,6 +44,11 @@ public class MainFrame extends javax.swing.JFrame
         new MyButton (c, 'a', "NSiren", "galls_newqsiren.wav");
         new MyButton (c, 'b', "NThunder", "galls_newthunder.wav");
         new MyButton (c, 'c', "Equinox", "EquinoxWail.wav");
+        new MyButton (c, 'd', "Ping", "tm4.wav");
+        new MyButton (c, 'e', "Ufo", "tm16.wav");
+        new MyButton (c, 'f', "Fire", "tbolt0001.wav");
+        new MyButton (c, 'g', "Martin", "mymartin.wav");
+        new MyButton (c, 'h', "Startrek", "STTNG35.wav");
 
         addKeyListener (new KeyAdapter ()
         {
@@ -54,7 +62,7 @@ public class MainFrame extends javax.swing.JFrame
         });
 
         pack ();
-    }// </editor-fold>
+    }
 
     /**
      * @param args the command line arguments

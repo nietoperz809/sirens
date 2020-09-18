@@ -3,8 +3,10 @@ package sirens;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.Line;
+import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class ClipHandler
 {
@@ -35,9 +37,10 @@ public class ClipHandler
             }
             return;
         }
-        InputStream is = ClassLoader.getSystemResourceAsStream (name);
         try
         {
+            InputStream is = new BufferedInputStream (
+                    Objects.requireNonNull (ClassLoader.getSystemResourceAsStream (name)));
             cl = playWave (is);
             map.put (name, cl);
         }

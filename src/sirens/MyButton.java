@@ -1,5 +1,7 @@
 package sirens;
 
+import com.sun.java.swing.plaf.windows.WindowsToggleButtonUI;
+
 import javax.swing.*;
 import javax.swing.plaf.ButtonUI;
 import javax.swing.plaf.metal.MetalToggleButtonUI;
@@ -11,7 +13,7 @@ class MyButton extends JToggleButton
 {
     private static final HashMap<Character, MyButton> keyMap = new HashMap<>();
 
-    private static final ButtonUI ui = new MetalToggleButtonUI ()
+    private static final ButtonUI ui = new MetalToggleButtonUI()
     {
         @Override
         protected Color getSelectColor ()
@@ -30,6 +32,8 @@ class MyButton extends JToggleButton
         super ();
         keyMap.put (key, this);
         setText ("["+key+"] "+title);
+        setForeground (Color.RED); // text color
+        setBorder (BorderFactory.createLineBorder (Color.BLUE, 2));
         addActionListener (evt -> ClipHandler.startStop (wavefile));
 
         setPreferredSize (new Dimension (100, 100));
