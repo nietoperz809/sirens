@@ -26,9 +26,13 @@ public class MainFrame extends javax.swing.JFrame
 //            e.printStackTrace ();
 //        }
 
-        Container c = getContentPane ();
+        setContentPane (new ImagePanel ());
         setDefaultCloseOperation (javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        c.setLayout (new java.awt.GridLayout (3, 3));
+        GridLayout gr = new GridLayout (3, 3);
+        gr.setHgap (50);
+        gr.setVgap (50);
+        Container c = getContentPane ();
+        c.setLayout (gr);
 
         // Variables declaration - do not modify
         new MyButton (c, '1', "HiLo", "Code3HiLo.wav");

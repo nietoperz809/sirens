@@ -33,11 +33,12 @@ class MyButton extends JToggleButton
         keyMap.put (key, this);
         setText ("["+key+"] "+title);
         setForeground (Color.RED); // text color
-        setBorder (BorderFactory.createLineBorder (Color.BLUE, 2));
+        setBorder (BorderFactory.createLineBorder (Color.YELLOW, 3));
         addActionListener (evt -> ClipHandler.startStop (wavefile));
 
-        setPreferredSize (new Dimension (100, 100));
-        setMinimumSize (new Dimension (100, 100));
+        Dimension d = new Dimension(90,70);
+        setPreferredSize (d);
+        setMinimumSize (d);
         setUI (ui);
 
         pane.add(this);

@@ -39,9 +39,7 @@ public class ClipHandler
         }
         try
         {
-            InputStream is = new BufferedInputStream (
-                    Objects.requireNonNull (ClassLoader.getSystemResourceAsStream (name)));
-            cl = playWave (is);
+            cl = playWave (Utils.getRessource (name));
             map.put (name, cl);
         }
         catch (Exception e)
