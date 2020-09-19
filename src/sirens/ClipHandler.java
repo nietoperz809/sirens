@@ -1,50 +1,37 @@
 package sirens;
 
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.Line;
-import java.io.BufferedInputStream;
-import java.io.InputStream;
+import javax.sound.sampled.*;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class ClipHandler
 {
-    private static HashMap<String, Clip> map = new HashMap<> ();
-
-    private static Clip playWave (InputStream is) throws Exception
-    {
-        final Clip clip = (Clip) AudioSystem.getLine (new Line.Info (Clip.class));
-        clip.open (AudioSystem.getAudioInputStream (is));
-        clip.loop (Clip.LOOP_CONTINUOUSLY);
-        clip.start ();
-        return clip;
-    }
+    private static final HashMap<String, Clip> map = new HashMap<> ();
 
     public static void startStop (String name)
     {
         Clip cl = map.get (name);
-        if (cl != null)
+        if (cl == null)
         {
-            if (cl.isRunning ())
+            try
             {
-                cl.stop ();
+                cl = (Clip) AudioSystem.getLine (new Line.Info (Clip.class));
+                cl.open (AudioSystem.getAudioInputStream (Utils.getResource (name)));
+                map.put (name, cl);
             }
-            else
+            catch (Exception e)
             {
-                cl.loop (Clip.LOOP_CONTINUOUSLY);
-                cl.start ();
+                System.out.println ("no clip");
+                return;
             }
-            return;
         }
-        try
+        if (cl.isRunning ())
         {
-            cl = playWave (Utils.getRessource (name));
-            map.put (name, cl);
+            cl.stop ();
         }
-        catch (Exception e)
+        else
         {
-            System.out.println (e);
+            cl.loop (Clip.LOOP_CONTINUOUSLY);
+            cl.start ();
         }
     }
 }

@@ -5,7 +5,7 @@ import java.io.InputStream;
 
 public class Utils
 {
-    public static InputStream getRessource (String name)
+    public static InputStream getResource (String name)
     {
         InputStream is = ClassLoader.getSystemResourceAsStream (name);
         if (is == null)

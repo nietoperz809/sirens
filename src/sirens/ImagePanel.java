@@ -1,7 +1,5 @@
 package sirens;
 
-import sirens.Utils;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +13,7 @@ class ImagePanel extends JComponent
     {
         try
         {
-            this.image = ImageIO.read (Utils.getRessource ("copcar.jpg"));
+            this.image = ImageIO.read (Utils.getResource ("copcar.jpg"));
         }
         catch (IOException e)
         {
