@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.Objects;
 
 class ImagePanel extends JComponent
 {
@@ -11,9 +12,11 @@ class ImagePanel extends JComponent
 
     public ImagePanel ()
     {
+        Dimension d = new Dimension(300,300);
+        setPreferredSize (d);
         try
         {
-            this.image = ImageIO.read (Utils.getResource ("copcar.jpg"));
+            this.image = ImageIO.read (Objects.requireNonNull (Utils.getResource ("copcar.jpg")));
         }
         catch (IOException e)
         {

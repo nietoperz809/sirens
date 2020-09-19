@@ -6,6 +6,7 @@
  */
 package sirens;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -26,13 +27,14 @@ public class MainFrame extends javax.swing.JFrame
 //            e.printStackTrace ();
 //        }
 
-        setContentPane (new ImagePanel ());
+        BorderLayout bl = new BorderLayout();
+        getContentPane().setLayout (bl);
+        ImagePanel ip = new ImagePanel();
+        JPanel c = new JPanel ();
+        c.setLayout (new GridLayout (3,3));
+        this.add (ip, BorderLayout.CENTER);
+        this.add (c, BorderLayout.SOUTH);
         setDefaultCloseOperation (javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        GridLayout gr = new GridLayout (3, 3);
-        gr.setHgap (50);
-        gr.setVgap (50);
-        Container c = getContentPane ();
-        c.setLayout (gr);
 
         // Variables declaration - do not modify
         new MyButton (c, '1', "HiLo", "Code3HiLo.wav");
