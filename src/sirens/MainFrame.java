@@ -54,6 +54,7 @@ public class MainFrame extends javax.swing.JFrame
         new MyButton (c, 'f', "Fire", "tbolt0001.wav");
         new MyButton (c, 'g', "Martin", "mymartin.wav");
         new MyButton (c, 'h', "Startrek", "STTNG35.wav");
+        new MyButton (c, 'i', "Air Raid", "airraid.wav");
 
         addKeyListener (new KeyAdapter ()
         {
@@ -67,6 +68,7 @@ public class MainFrame extends javax.swing.JFrame
         });
 
         pack ();
+        setLocationRelativeTo(null);
     }
 
     /**

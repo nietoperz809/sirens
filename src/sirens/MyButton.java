@@ -31,7 +31,7 @@ class MyButton extends JToggleButton
     {
         super ();
         keyMap.put (key, this);
-        setText ("["+key+"] "+title);
+        setText ("<html>["+key+"]<br>"+title+"</html>");
         setForeground (Color.RED); // text color
         setBorder (BorderFactory.createLineBorder (Color.RED, 2));
         addActionListener (evt -> ClipHandler.startStop (wavefile));
