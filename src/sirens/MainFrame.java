@@ -57,6 +57,8 @@ public class MainFrame extends javax.swing.JFrame
         new MyButton (c, 'g', "Martin", "mymartin.wav");
         new MyButton (c, 'h', "Startrek", "STTNG35.wav");
         new MyButton (c, 'i', "Air Raid", "airraid.wav");
+        new MyButton (c, 'j', "Rumbler", "rumbler.wav");
+        new MyButton (c, 'j', "Train Horn", "monotrain.wav");
 
         addKeyListener (new KeyAdapter ()
         {
