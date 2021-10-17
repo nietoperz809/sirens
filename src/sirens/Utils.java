@@ -2,6 +2,7 @@ package sirens;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
+import java.net.URL;
 
 public class Utils
 {
@@ -14,5 +15,10 @@ public class Utils
             return null;
         }
         return new BufferedInputStream (is);
+    }
+
+    public static URL getResourceAsURL(String name)
+    {
+        return ClassLoader.getSystemResource(name);
     }
 }

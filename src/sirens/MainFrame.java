@@ -11,6 +11,8 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import static sirens.Utils.getResourceAsURL;
+
 /**
  * @author Administrator
  */
@@ -18,21 +20,21 @@ public class MainFrame extends javax.swing.JFrame
 {
     public MainFrame ()
     {
-//        try
-//        {
-//            javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-//        }
-//        catch (Exception e)
-//        {
-//            e.printStackTrace ();
-//        }
-
         BorderLayout bl = new BorderLayout();
         getContentPane().setLayout (bl);
-        ImagePanel ip = new ImagePanel();
+
+        // Animated gif
+        Dimension dim = new Dimension(600,300);
+        ImageIcon icon = new ImageIcon(getResourceAsURL("pcar.gif"));
+        icon.setImage (icon.getImage().getScaledInstance(dim.width, dim.height, Image.SCALE_DEFAULT));
+        JLabel label = new JLabel(icon);
+        label.setMinimumSize(dim);
+        label.setPreferredSize(dim);
+        label.setMaximumSize(dim);
+
         JPanel c = new JPanel ();
         c.setLayout (new GridLayout (3,3));
-        this.add (ip, BorderLayout.CENTER);
+        this.add (label, BorderLayout.CENTER);
         this.add (c, BorderLayout.SOUTH);
         setDefaultCloseOperation (javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
